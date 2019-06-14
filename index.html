@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <link rel="stylesheet" href="./bootstrap.min.css">
+  <link rel="stylesheet" href="./formio.full.min.css">
+  <script src="./formio.full.min.js"></script>
+
+</head>
+
+<body class="container">
+  <div class="row">
+    <div class="col-2">
+      <button class="btn btn-info" onclick="builderRedirect()">Builder</button>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-info" onclick="renderRedirect()">Render</button>
+      </div>
+  </div>
+      <script>
+        function renderRedirect() {
+          window.location.pathname='/qmr-14-form-render.html';
+        }
+
+        function builderRedirect() {
+          window.location.pathname='/qmr-14-form-builder.html';
+        }
+      </script>
+</body>
+
+</html>
