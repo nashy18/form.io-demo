@@ -5,8 +5,8 @@ function init() {
   Formio.icons = 'fontawesome'; 
 }
 
-async function getFormTemplate(params=null, type='r') {
-  const data= await fetch(`/form.io-demo/${params}`).then(function(response) {
+function getFormTemplate(params=null, type='r') {
+  const data= fetch(`/form.io-demo/${params}`).then(function(response) {
     return response.json();
   })
   .then(function(myJson) {
@@ -43,9 +43,65 @@ function renderForm(params={}) {debugger
   });
 }
 
+//for custom components
+const builderConfig = {
+  builder: {
+    custom: {
+      title: 'Custom Components',
+      weight: 10,
+      components: {
+        firstName: {
+          title: 'First Name',
+          key: 'firstName',
+          icon: 'fa fa-terminal',
+          schema: {
+            label: 'First Name',
+            type: 'textfield',
+            key: 'firstName',
+            input: true
+          }
+        },
+        lastName: {
+          title: 'Last Name',
+          key: 'lastName',
+          icon: 'fa fa-terminal',
+          schema: {
+            label: 'Last Name',
+            type: 'textfield',
+            key: 'lastName',
+            input: true
+          }
+        },
+        email: {
+          title: 'Email',
+          key: 'email',
+          icon: 'fa fa-at',
+          schema: {
+            label: 'Email',
+            type: 'email',
+            key: 'email',
+            input: true
+          }
+        },
+        phoneNumber: {
+          title: 'Mobile Phone',
+          key: 'mobilePhone',
+          icon: 'fa fa-phone-square',
+          schema: {
+            label: 'Mobile Phone',
+            type: 'phoneNumber',
+            key: 'mobilePhone',
+            input: true
+          }
+        }
+      }
+    }
+  }
+}
+
 function builder(params) {
-  Formio.builder(document.getElementById('builder'), params).then(function (builder) {
-	  builderInstance = builder;
+  Formio.builder(document.getElementById('builder'), params, builderConfig).then(function (builder) {
+    builderInstance = builder;
     builder.on('saveComponent', function () {debugger
       console.log(builder.schema);
     });
