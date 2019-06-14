@@ -3,7 +3,7 @@ function init() {
 }
 
 async function getFormTemplate(params=null, type='r') {
-  const data= await fetch(`/${params}`).then(function(response) {
+  const data= await fetch(`./${params}`).then(function(response) {
     return response.json();
   })
   .then(function(myJson) {
