@@ -125,32 +125,37 @@
                 },
                 {
                   "label": "Brand",
-                  "mask": false,
+                  "allowMultipleMasks": false,
+                  "persistent": "client-only",
+                  "showWordCount": false,
+                  "showCharCount": false,
                   "disabled": true,
                   "tableView": true,
                   "alwaysEnabled": false,
-                  "type": "number",
+                  "type": "textfield",
                   "input": true,
-                  "inputType": "number",
-                  "key": "columns2Code",
+                  "key": "brand",
                   "defaultValue": "",
+                  "refreshOn": "itemCode",
+                  "clearOnRefresh": true,
                   "validate": {
-                    "multiple": "",
                     "customMessage": "",
                     "json": ""
                   },
-                  "tags": [],
                   "conditional": {
                     "show": "",
                     "when": "",
                     "json": ""
                   },
-                  "properties": {},
-                  "delimiter": false,
-                  "requireDecimal": false,
+                  "inputFormat": "plain",
                   "encrypted": false,
                   "customConditional": "",
+                  "properties": {},
                   "logic": [],
+                  "customDefaultValue": "value = null;\nif(row.itemCode){\n  value = row.itemCode.Brand\n}",
+                  "widget": {
+                    "type": ""
+                  },
                   "reorder": false
                 },
                 {
@@ -163,7 +168,6 @@
                   "input": true,
                   "inputType": "number",
                   "key": "columns2Code2",
-                  "defaultValue": "",
                   "validate": {
                     "multiple": "",
                     "customMessage": "",
@@ -181,6 +185,9 @@
                   "encrypted": false,
                   "customConditional": "",
                   "logic": [],
+                  "customDefaultValue": "value = null;\nif(row.itemCode){\n  value = row.itemCode[\"DateCodeFormat\"]\n}",
+                  "refreshOn": "itemCode",
+                  "clearOnRefresh": true,
                   "reorder": false
                 }
               ],
@@ -223,16 +230,16 @@
                   "input": true,
                   "defaultValue": "",
                   "validate": {
-                    "select": false,
                     "customMessage": "",
-                    "json": ""
+                    "json": "",
+                    "required": true,
+                    "select": false
                   },
                   "conditional": {
                     "show": "",
                     "when": "",
                     "json": ""
                   },
-                  "reorder": false,
                   "lazyLoad": false,
                   "selectValues": "",
                   "disableLimit": false,
@@ -242,7 +249,8 @@
                   "encrypted": false,
                   "properties": {},
                   "customConditional": "",
-                  "logic": []
+                  "logic": [],
+                  "reorder": false
                 },
                 {
                   "label": "Product",
@@ -269,13 +277,49 @@
                     "customMessage": "",
                     "json": ""
                   },
+                  "encrypted": false,
+                  "customConditional": "",
+                  "logic": [],
+                  "customDefaultValue": "value = null;\nif(row.itemCode){\n  value = row.itemCode[\"Product :\"]\n}",
+                  "refreshOn": "itemCode",
+                  "clearOnRefresh": true,
                   "widget": {
                     "type": ""
                   },
-                  "reorder": false,
+                  "reorder": false
+                },
+                {
+                  "label": "HTML",
+                  "tag": "label",
+                  "className": "mb-n4",
+                  "attrs": [
+                    {
+                      "attr": "",
+                      "value": ""
+                    }
+                  ],
+                  "content": "<label>Code Picture</label>",
+                  "refreshOnChange": false,
+                  "mask": false,
+                  "tableView": true,
+                  "alwaysEnabled": false,
+                  "type": "htmlelement",
+                  "input": false,
+                  "key": "html",
+                  "validate": {
+                    "customMessage": "",
+                    "json": ""
+                  },
+                  "conditional": {
+                    "show": "",
+                    "when": "",
+                    "json": ""
+                  },
                   "encrypted": false,
+                  "properties": {},
                   "customConditional": "",
-                  "logic": []
+                  "logic": [],
+                  "reorder": false
                 },
                 {
                   "label": "Code Picture",
@@ -286,7 +330,7 @@
                       "value": ""
                     }
                   ],
-                  "content": "<div class=\"well\"><label>Code Picture</label><img class=\"img-fluid img-thumbnail\" src=\"https://images.tedium.co/2018/01/vdwnroswr2svg7qkfh8v.png\"/></div>",
+                  "content": "<div class=\"well\"><img class=\"img-fluid img-thumbnail\" src=\"https://images.tedium.co/2018/01/vdwnroswr2svg7qkfh8v.png\"/></div>",
                   "refreshOnChange": false,
                   "mask": false,
                   "tableView": true,
@@ -305,8 +349,11 @@
                   },
                   "encrypted": false,
                   "properties": {},
-                  "customConditional": "",
+                  "customConditional": "show = false;\nif(row.itemCode){\n  show = true\n}",
                   "logic": [],
+                  "customDefaultValue": "value = '<div class=\"well\"><label>Code Picture</label><img class=\"img-fluid img-thumbnail\" src=\"https://images.tedium.co/2018/01/vdwnroswr2svg7qkfh8v.png\"/></div>'",
+                  "refreshOn": "itemCode",
+                  "clearOnRefresh": true,
                   "reorder": false
                 }
               ],
@@ -349,26 +396,29 @@
                   "input": true,
                   "defaultValue": "",
                   "validate": {
-                    "select": false,
                     "customMessage": "",
-                    "json": ""
+                    "json": "",
+                    "required": true,
+                    "select": false
                   },
                   "conditional": {
                     "show": "",
                     "when": "",
                     "json": ""
                   },
-                  "reorder": false,
                   "lazyLoad": false,
                   "selectValues": "",
                   "disableLimit": false,
                   "sort": "",
-                  "reference": false,
                   "selectThreshold": 0.3,
                   "encrypted": false,
                   "properties": {},
                   "customConditional": "",
-                  "logic": []
+                  "logic": [],
+                  "refreshOn": "plant",
+                  "clearOnRefresh": true,
+                  "reorder": false,
+                  "reference": false
                 },
                 {
                   "label": "Net Weight",
@@ -395,13 +445,16 @@
                     "customMessage": "",
                     "json": ""
                   },
+                  "encrypted": false,
+                  "customConditional": "",
+                  "logic": [],
+                  "customDefaultValue": "value = null;\nif(row.itemCode){\n  value = row.itemCode[\"Net weight :\"]\n}",
+                  "refreshOn": "itemCode",
+                  "clearOnRefresh": true,
                   "widget": {
                     "type": ""
                   },
-                  "reorder": false,
-                  "encrypted": false,
-                  "customConditional": "",
-                  "logic": []
+                  "reorder": false
                 },
                 {
                   "label": "UPC",
@@ -413,7 +466,6 @@
                   "input": true,
                   "inputType": "number",
                   "key": "columns2Code3",
-                  "defaultValue": "",
                   "validate": {
                     "multiple": "",
                     "customMessage": "",
@@ -431,6 +483,9 @@
                   "encrypted": false,
                   "customConditional": "",
                   "logic": [],
+                  "customDefaultValue": "value = null;\nif(row.itemCode){\n  value = row.itemCode[\"UPCcodeofbag\"]\n}",
+                  "refreshOn": "itemCode",
+                  "clearOnRefresh": true,
                   "reorder": false
                 }
               ],
@@ -466,33 +521,35 @@
                   },
                   "limit": 5000,
                   "dataSrc": "url",
-                  "valueProperty": "id",
                   "test": "",
                   "template": "<span>{{ item.Itemcode }}</span>",
                   "searchThreshold": 0.4,
                   "input": true,
                   "defaultValue": "",
                   "validate": {
-                    "select": false,
                     "customMessage": "",
-                    "json": ""
+                    "json": "",
+                    "required": true,
+                    "select": false
                   },
                   "conditional": {
                     "show": "",
                     "when": "",
                     "json": ""
                   },
-                  "reorder": false,
                   "lazyLoad": false,
                   "selectValues": "",
                   "disableLimit": false,
                   "sort": "",
-                  "reference": false,
                   "selectThreshold": 0.3,
                   "encrypted": false,
                   "properties": {},
                   "customConditional": "",
-                  "logic": []
+                  "logic": [],
+                  "refreshOn": "plant",
+                  "clearOnRefresh": true,
+                  "reorder": false,
+                  "reference": false
                 },
                 {
                   "label": "BBD",
@@ -519,13 +576,16 @@
                     "customMessage": "",
                     "json": ""
                   },
+                  "encrypted": false,
+                  "customConditional": "",
+                  "logic": [],
+                  "customDefaultValue": "value = null;\nif(row.itemCode){\n  value = row.itemCode[\"Bestbefore\"]\n}",
+                  "refreshOn": "itemCode",
+                  "clearOnRefresh": true,
                   "widget": {
                     "type": ""
                   },
-                  "reorder": false,
-                  "encrypted": false,
-                  "customConditional": "",
-                  "logic": []
+                  "reorder": false
                 },
                 {
                   "label": "GTIN",
@@ -537,7 +597,6 @@
                   "input": true,
                   "inputType": "number",
                   "key": "columns2Code4",
-                  "defaultValue": "",
                   "validate": {
                     "multiple": "",
                     "customMessage": "",
@@ -555,6 +614,9 @@
                   "encrypted": false,
                   "customConditional": "",
                   "logic": [],
+                  "customDefaultValue": "value = null;\nif(row.itemCode){\n  value = row.itemCode[\"GTINcodeofbox\"]\n}",
+                  "refreshOn": "itemCode",
+                  "clearOnRefresh": true,
                   "reorder": false
                 }
               ],
