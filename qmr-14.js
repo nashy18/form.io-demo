@@ -170,7 +170,7 @@ const builderConfig = {
             },
             limit: 5000,
             dataSrc: 'url',
-            valueProperty: '',
+            valueProperty: 'id',
             test:'',
             filter: '',
             searchEnabled: true,
@@ -208,6 +208,7 @@ function saveTemplate() {
   let data = builderInstance.schema;
   if (!data) return alert("Please add components first");
   localStorage.setItem("template", JSON.stringify(data));
+  alert("Templated saved successfully");
 }
 
 //on page load
